@@ -1,9 +1,20 @@
-package CPIT305PROJECT;
+package CPIT205PROJECT;
+
 import java.util.*;
+
+
 
 class MenuItem {
     private String name;
+    private double priceM;
+    private double priceL;
     private double price;
+
+    public MenuItem(String name, double priceM, double priceL) {
+        this.name = name;
+        this.priceM = priceM;
+        this.priceL = priceL;
+    }
 
     public MenuItem(String name, double price) {
         this.name = name;
@@ -14,16 +25,30 @@ class MenuItem {
         return name;
     }
 
-    public double getPrice() {
+    public double getPriceM() {
+        return priceM;
+    }
+
+    public double getPriceL() {
+        return priceL;
+    }
+
+    public double getSizePrice(String size){
+        if(size=="M")
+            return priceM;
+        else if (size=="L")
+            return priceL;
+        
         return price;
     }
 }
 
 class OrderItem {
     private MenuItem menuItem;
+    private String Size;
     private int quantity;
 
-    public OrderItem(MenuItem menuItem, int quantity) {
+    public OrderItem(MenuItem menuItem, String Size, int quantity) {
         this.menuItem = menuItem;
         this.quantity = quantity;
     }
@@ -37,7 +62,7 @@ class OrderItem {
     }
 
     public double getTotalPrice() {
-        return menuItem.getPrice() * quantity;
+        return menuItem.getSizePrice(Size) * quantity;
     }
 }
 
@@ -84,4 +109,6 @@ class Cafe {
         return new Order();
     }
 }
+
+
 
