@@ -4,9 +4,14 @@ public class CafeManagementSystem {
     public static void main(String[] args) {
         Cafe cafe = new Cafe();
 
+        FileReader text=new FileReader("menu.txt");
+        BufferedReader readMenu;
+
+        readMenu= new BufferedReader(text);
+        
         // Adding menu items
-        cafe.addItem(new MenuItem("Coffee", 2.50));
-        cafe.addItem(new MenuItem("Tea", 1.75));
+        //cafe.addItem(new MenuItem("Coffee", 2.50));
+        //cafe.addItem(new MenuItem("Tea", 1.75));
         // Add more menu items as needed
 
         // Creating an order
