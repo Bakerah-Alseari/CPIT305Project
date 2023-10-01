@@ -1,3 +1,5 @@
+package CPIT205PROJECT;
+
 public class CafeManagementSystem {
     public static void main(String[] args) {
         Cafe cafe = new Cafe();
