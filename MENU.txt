@@ -1,0 +1,20 @@
+MENU
+
+Drinks
+
+Hot
+Cappuccion.......8,11
+Latte............8,11
+Mocaccino........9,12
+Americano........7,10
+Espresso.........6,8
+
+Cold
+Flat White.........11,14
+Latte..............11,14
+Caramel Macchiato..13,16
+
+Desserts
+
+Chocolate Cake...21
+Donut............8
