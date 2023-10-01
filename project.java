@@ -1,3 +1,4 @@
+package CPIT205PROJECT;
 import java.util.*;
 
 class MenuItem {
