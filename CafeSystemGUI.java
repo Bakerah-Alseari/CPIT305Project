@@ -28,9 +28,13 @@ public class CafeSystemGUI extends JFrame {
         nameLabel = new JLabel("Name:");
         nameTextField = new JTextField(15);
         beverageLabel = new JLabel("         Beverage:");
+        
+        //add beverages useing file
         String[] beverages = {"Coffee", "Tea", "Juice"};
         beverageComboBox = new JComboBox<>(beverages);
         BakeryLabel = new JLabel("Bakery:");
+
+        //add Bakery useing file
         String[] Bakery = {"Donuts", "Cake", "biscuits "};
         BakeryComboBox = new JComboBox<>(Bakery);
         orderButton = new JButton("Place Order");
