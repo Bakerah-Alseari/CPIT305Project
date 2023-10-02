@@ -4,19 +4,20 @@ import java.util.*;
 
 
 
+
 class MenuItem {
     private String name;
-    private double priceM;
-    private double priceL;
-    private double price;
-
-    public MenuItem(String name, double priceM, double priceL) {
+    private int price;
+    private int Lprice;
+    
+    public MenuItem(String name, int price,int Lprice) {
         this.name = name;
-        this.priceM = priceM;
-        this.priceL = priceL;
+        this.price = price;
+        this.Lprice=Lprice;
     }
 
-    public MenuItem(String name, double price) {
+
+    public MenuItem(String name, int price) {
         this.name = name;
         this.price = price;
     }
@@ -25,21 +26,11 @@ class MenuItem {
         return name;
     }
 
-    public double getPriceM() {
-        return priceM;
-    }
-
-    public double getPriceL() {
-        return priceL;
-    }
-
-    public double getSizePrice(String size){
-        if(size=="M")
-            return priceM;
-        else if (size=="L")
-            return priceL;
-        
+    public int getPrice() {
         return price;
+    }
+    public int getLPrice() {
+        return Lprice;
     }
 }
 
