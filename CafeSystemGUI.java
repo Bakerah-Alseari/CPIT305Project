@@ -86,7 +86,7 @@ public class CafeSystemGUI extends JFrame {
         ArrayList<MenuItem> items = new ArrayList<>();
         String category = "";
 
-        try (BufferedReader menuReader = new BufferedReader(new FileReader("MenuForP.txt"))) {
+        try (BufferedReader menuReader = new BufferedReader(new FileReader("MENU.txt"))) {
             String line=menuReader.readLine();
             
                 if (line.equalsIgnoreCase("Drinks")) {
