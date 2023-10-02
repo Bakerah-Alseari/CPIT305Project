@@ -4,9 +4,7 @@ Latte,8,11
 Americano,7,10
 Espresso,6,8
 FlatWhite,11,14
-Latte,11,14
 CaramelMacchiato,13,16
-
 Desserts
 Chocolate Cake,21
 Donut,8
