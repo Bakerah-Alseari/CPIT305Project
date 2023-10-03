@@ -82,11 +82,11 @@ public class CafeSystemGUI extends JFrame {
 
 
     //
-    public static ArrayList<MenuItem> AddItem(){
+        public static ArrayList<MenuItem> AddItem(){
         ArrayList<MenuItem> items = new ArrayList<>();
-        String category = "";
+        //String category = "";
 
-        try (BufferedReader menuReader = new BufferedReader(new FileReader("MENU.txt"))) {
+        try (BufferedReader menuReader = new BufferedReader(new FileReader("MenuForP.txt"))) {
             String line=menuReader.readLine();
             
                 if (line.equalsIgnoreCase("Drinks")) {
@@ -117,9 +117,7 @@ public class CafeSystemGUI extends JFrame {
         }
         
         
-        String[] beverages = new String[items.size()];
-        for(int i = 0; i < items.size(); i++){
-            beverages[i]=items.get(i).getName();
-        }
+        return items;
  ///
+}
 }
