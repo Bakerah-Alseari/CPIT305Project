@@ -44,7 +44,7 @@ class MenuItem {
     }
 }
 
-class OrderItem {
+/*class OrderItem {
     private MenuItem menuItem;
     private String Size;
     private int quantity;
@@ -109,7 +109,7 @@ class Cafe {
     public Order createOrder() {
         return new Order();
     }
-}
+}*/
 
 
 
