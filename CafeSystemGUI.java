@@ -1,3 +1,5 @@
+package CPIT305PROJECT;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,13 +19,10 @@ public class CafeSystemGUI extends JFrame {
     private JComboBox<String> beverageComboBox;
     private JLabel numOfBevLabel;
     private JTextField numOfBevTextField;
-    private JLabel sizeOfBevLabel;
+    
     private JComboBox<String> beverageSizeComboBox;
 
 
-
-    //private JLabel BakeryLabel;
-    //private JComboBox<String> BakeryComboBox;
     private JButton orderButton;
 
     public CafeSystemGUI() {
@@ -33,22 +32,15 @@ public class CafeSystemGUI extends JFrame {
         setLayout(new FlowLayout());
 
         nameLabel = new JLabel("   Name:");
-        nameTextField = new JTextField(15); //15
+        nameTextField = new JTextField(15); 
         beverageLabel = new JLabel("        Beverage:");
 
+        
         //
         ArrayList<MenuItem> item = AddItem();
         String[] beverages = new String[item.size()];
         for(int i = 0; i < item.size(); i++){
             beverages[i]=item.get(i).getName();
-        }
-
-        ArrayList<MenuItem> itemPrice = AddItem();
-        double[] beveragesMPrice = new double[item.size()];
-        double[] beveragesLPrice = new double[item.size()];
-        for(int i = 0; i < item.size(); i++){
-            beveragesMPrice[i]=itemPrice.get(i).getPriceM();
-            beveragesLPrice[i]=itemPrice.get(i).getPriceL();
         }
 
         //
@@ -58,48 +50,56 @@ public class CafeSystemGUI extends JFrame {
         numOfBevLabel = new JLabel("How many drinks would you like?");
         numOfBevTextField = new JTextField(5);
 
-        sizeOfBevLabel = new JLabel("What size would you like?");
+        JLabel sizeOfBevLabel = new JLabel("What size would you like?");
         String[] sizes = {"Medium", "Large"};
         beverageSizeComboBox = new JComboBox<>(sizes);
-
-
-
-        //BakeryLabel = new JLabel("Bakery:");
-        //add Bakery useing file
-        //String[] Bakery = {"Donuts", "Cake", "biscuits "};
-        //BakeryComboBox = new JComboBox<>(Bakery);
-
+        
 
         orderButton = new JButton("Place Order");
 
 
         orderButton.addActionListener(new ActionListener() {
-            public void actionPerformed( ActionEvent e) {
-                String name = nameTextField.getText();
-                String beverage = (String) beverageComboBox.getSelectedItem();
-                String numberOfBev = numOfBevTextField.getText();
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-                LocalDateTime now = LocalDateTime.now();
-                String orderDateTime = dtf.format(now);
+        public void actionPerformed(ActionEvent e) {
+        String name = nameTextField.getText();
+        String beverage = (String) beverageComboBox.getSelectedItem();
+        String beverageSize = (String) beverageSizeComboBox.getSelectedItem();
+        double price = 0.0;
 
-
-                String orderInfo = "Name: " + name + "\nBeverage: " + beverage +
-                        "\nNumber of beverages ordered: " + numberOfBev + "\nOrder Date/Time: "
-                        + orderDateTime + "\nTotal price for order: ";
-
-                try {
-
-                    FileWriter writer = new FileWriter("order.txt", true);
-                    writer.write(orderInfo);
-                    writer.write("\n\n");
-                    writer.close();
-                    JOptionPane.showMessageDialog(null, "Thank you " + name + ", your " + beverage + " order has been placed.");
-                } catch (
-                        IOException ex) {
-                    ex.printStackTrace();
+        //
+        for (MenuItem item : item) {
+            if (item.getName().equalsIgnoreCase(beverage)) {
+                if (beverageSize.equalsIgnoreCase("Medium")) {
+                    price = item.getPriceM();
+                } else if (beverageSize.equalsIgnoreCase("Large")) {
+                    price = item.getPriceL();
                 }
+                break;
             }
-        });
+        }
+        //
+
+        String numberOfBev = numOfBevTextField.getText();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String orderDateTime = dtf.format(now);
+
+        String orderInfo = "Name: " + name + "\nBeverage: " + beverage +
+                "\nNumber of beverages ordered: " + numberOfBev + "\nOrder Size: " + beverageSize +"\nPrice :"+
+                price+
+                "\nOrder Date/Time: " + orderDateTime + "\nTotal price for order: $" + String.format("%.2f", price * Integer.parseInt(numberOfBev));
+
+        try {
+            FileWriter writer = new FileWriter("order.txt", true);
+            writer.write(orderInfo);
+            writer.write("\n\n");
+            writer.close();
+            JOptionPane.showMessageDialog(null, "Thank you " + name + ", your " + beverage + " order has been placed.");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+});
+
 
 
         add(nameLabel);
@@ -110,8 +110,6 @@ public class CafeSystemGUI extends JFrame {
         add(numOfBevTextField);
         add(sizeOfBevLabel);
         add(beverageSizeComboBox);
-        //add(BakeryLabel);
-        //add(BakeryComboBox);
         add(orderButton);
 
         setVisible(true);
@@ -157,4 +155,5 @@ public class CafeSystemGUI extends JFrame {
         return items;
         ///
     }
+
 }
