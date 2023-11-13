@@ -3,25 +3,15 @@ import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
 import java.util.*;
+import javax.swing.*;
+
 public class CafeManagementSystem {
     public static void main(String[] args) {
-        CafeSystemGUI cafe =new CafeSystemGUI();
-        /*
-        try
-        {  String urlName = "https://www.kyancafe.com/menu";
-            URL url = new URL(urlName);
-            URLConnection connection = url.openConnection();
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36");
-            connection.connect();
-            try (Scanner in = new Scanner(connection.getInputStream(), StandardCharsets.UTF_8))
-            {   while(in.hasNextLine())
-                System.out.println(in.nextLine());
-            }
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        } */
+
+        SwingUtilities.invokeLater(() -> {
+            CafeSystemGUI cafe = new CafeSystemGUI();
+        });
+        
         try
         {  String urlName = "https://www.kyancafe.com";
             URL url = new URL(urlName);

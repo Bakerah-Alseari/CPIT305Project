@@ -19,7 +19,7 @@ public class CafeSystemGUI extends JFrame {
     private JComboBox<String> beverageComboBox;
     private JLabel numOfBevLabel;
     private JTextField numOfBevTextField;
-    
+
     private JComboBox<String> beverageSizeComboBox;
 
 
@@ -32,10 +32,10 @@ public class CafeSystemGUI extends JFrame {
         setLayout(new FlowLayout());
 
         nameLabel = new JLabel("   Name:");
-        nameTextField = new JTextField(15); 
+        nameTextField = new JTextField(15);
         beverageLabel = new JLabel("        Beverage:");
 
-        
+
         //
         ArrayList<MenuItem> item = AddItem();
         String[] beverages = new String[item.size()];
@@ -53,52 +53,41 @@ public class CafeSystemGUI extends JFrame {
         JLabel sizeOfBevLabel = new JLabel("What size would you like?");
         String[] sizes = {"Medium", "Large"};
         beverageSizeComboBox = new JComboBox<>(sizes);
-        
+
 
         orderButton = new JButton("Place Order");
 
 
         orderButton.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-        String name = nameTextField.getText();
-        String beverage = (String) beverageComboBox.getSelectedItem();
-        String beverageSize = (String) beverageSizeComboBox.getSelectedItem();
-        double price = 0.0;
+            public void actionPerformed(ActionEvent e) {
+                String name = nameTextField.getText();
+                String beverage = (String) beverageComboBox.getSelectedItem();
+                String beverageSize = (String) beverageSizeComboBox.getSelectedItem();
+                double price = 0.0;
 
-        //
-        for (MenuItem item : item) {
-            if (item.getName().equalsIgnoreCase(beverage)) {
-                if (beverageSize.equalsIgnoreCase("Medium")) {
-                    price = item.getPriceM();
-                } else if (beverageSize.equalsIgnoreCase("Large")) {
-                    price = item.getPriceL();
+                //
+                for (MenuItem item : item) {
+                    if (item.getName().equalsIgnoreCase(beverage)) {
+                        if (beverageSize.equalsIgnoreCase("Medium")) {
+                            price = item.getPriceM();
+                        } else if (beverageSize.equalsIgnoreCase("Large")) {
+                            price = item.getPriceL();
+                        }
+                        break;
+                    }
                 }
-                break;
+                //
+
+                String numberOfBev = numOfBevTextField.getText();
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime now = LocalDateTime.now();
+                String orderDateTime = dtf.format(now);
+
+                // Create a new OrderProcessor and start it in a separate thread
+                OrderProcessor orderProcessor = new OrderProcessor(name, beverage, beverageSize, price, numberOfBev, orderDateTime);
+                new Thread(orderProcessor).start();
             }
-        }
-        //
-
-        String numberOfBev = numOfBevTextField.getText();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        String orderDateTime = dtf.format(now);
-
-        String orderInfo = "Name: " + name + "\nBeverage: " + beverage +
-                "\nNumber of beverages ordered: " + numberOfBev + "\nOrder Size: " + beverageSize +"\nPrice :"+
-                price+
-                "\nOrder Date/Time: " + orderDateTime + "\nTotal price for order: $" + String.format("%.2f", price * Integer.parseInt(numberOfBev));
-
-        try {
-            FileWriter writer = new FileWriter("order.txt", true);
-            writer.write(orderInfo);
-            writer.write("\n\n");
-            writer.close();
-            JOptionPane.showMessageDialog(null, "Thank you " + name + ", your " + beverage + " order has been placed.");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-});
+        });
 
 
 

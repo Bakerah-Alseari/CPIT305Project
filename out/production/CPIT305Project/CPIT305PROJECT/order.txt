@@ -1,0 +1,8 @@
+Name: G
+Beverage: CaramelMacchiato
+Number of beverages ordered: 2
+Order Size: Large
+Price :16.0
+Order Date/Time: 2023/11/12 21:57:37
+Total price for order: $32.00
+
