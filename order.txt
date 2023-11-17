@@ -6,3 +6,75 @@ Price :16.0
 Order Date/Time: 2023/11/12 21:57:37
 Total price for order: $32.00
 
+Name: G
+Beverage: Cappuccion
+Number of beverages ordered: 1
+Order Size: Medium
+Price :8.0
+Order Date/Time: 2023/11/18 01:06:07
+Total price for order: $8.00
+
+Name: G
+Beverage: Americano
+Number of beverages ordered: 3
+Order Size: Medium
+Price :7.0
+Order Date/Time: 2023/11/18 01:18:16
+Total price for order: $21.00
+
+Name: G
+Beverage: Latte
+Number of beverages ordered: 4
+Order Size: Medium
+Price :8.0
+Order Date/Time: 2023/11/18 01:19:24
+Total price for order: $32.00
+
+Name: G
+Beverage: FlatWhite
+Number of beverages ordered: 3
+Order Size: Medium
+Price :11.0
+Order Date/Time: 2023/11/18 01:56:38
+Total price for order: $33.00
+
+Name: Gh
+Beverage: Americano
+Number of beverages ordered: 2
+Order Size: Medium
+Price :7.0
+Order Date/Time: 2023/11/18 02:41:46
+Total price for order: $14.00
+
+Name: Ghaya
+Beverage: Cappuccion
+Number of beverages ordered: 1
+Order Size: Medium
+Price :8.0
+Order Date/Time: 2023/11/18 02:42:46
+Total price for order: $8.00
+
+Name: Ghaya
+Beverage: Cappuccion
+Number of beverages ordered: 1
+Order Size: Medium
+Price :8.0
+Order Date/Time: 2023/11/18 02:43:19
+Total price for order: $8.00
+
+Name: G
+Beverage: Cappuccion
+Number of beverages ordered: 3
+Order Size: Medium
+Price :8.0
+Order Date/Time: 2023/11/18 02:45:52
+Total price for order: $24.00
+
+Name: G
+Beverage: CaramelMacchiato
+Number of beverages ordered: 2
+Order Size: Large
+Price :16.0
+Order Date/Time: 2023/11/18 02:46:52
+Total price for order: $32.00
+
